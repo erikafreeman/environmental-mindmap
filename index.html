@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Corporate Environmental Management Learning Hub</title>
+    <title>Corporate Environmental Management</title>
     <style>
         * {
             margin: 0;
@@ -12,80 +12,179 @@
         }
 
         body {
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a472a 0%, #2d5a27 25%, #4a7c59 50%, #6b9080 75%, #a4c3b2 100%);
-            min-height: 100vh;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            line-height: 1.6;
             overflow-x: auto;
-        }
-
-        .header {
-            text-align: center;
-            padding: 20px;
-            color: white;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
         }
 
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 60px 40px;
         }
 
-        .topic-grid {
+        /* Header Section */
+        .header {
+            margin-bottom: 80px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 40px;
+        }
+
+        .header-tagline {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .header-subtitle {
+            font-size: 2rem;
+            font-weight: 300;
+            color: #cccccc;
+            margin-bottom: 30px;
+        }
+
+        /* Navigation */
+        .nav-section {
+            margin-bottom: 60px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            text-decoration: underline;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #888;
+        }
+
+        /* Search Section */
+        .search-section {
+            margin-bottom: 60px;
+            padding: 30px;
+            border: 1px solid #333;
+            background-color: #222;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 500px;
+            padding: 15px 20px;
+            background-color: #1a1a1a;
+            border: 1px solid #444;
+            color: #ffffff;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: #666;
+        }
+
+        .search-input::placeholder {
+            color: #888;
+        }
+
+        /* Market Overview */
+        .market-overview {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: right;
+            color: #ffffff;
+        }
+
+        .overview-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
             margin-bottom: 40px;
         }
 
+        .overview-card {
+            background-color: #222;
+            border: 1px solid #333;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .overview-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .overview-label {
+            font-size: 14px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Main Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        /* Topic Cards */
         .topic-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background-color: #222;
+            border: 1px solid #333;
             transition: all 0.3s ease;
             cursor: pointer;
-            border-left: 5px solid #4a7c59;
         }
 
         .topic-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            border-color: #555;
+            background-color: #252525;
         }
 
         .card-header {
-            background: linear-gradient(135deg, #4a7c59, #6b9080);
-            color: white;
-            padding: 20px;
+            padding: 30px;
+            border-bottom: 1px solid #333;
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
         }
 
         .card-title {
-            display: flex;
-            align-items: center;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-
-        .card-icon {
             font-size: 1.5rem;
-            margin-right: 10px;
+            font-weight: 700;
+            color: #ffffff;
         }
 
         .expand-indicator {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
+            color: #888;
             transition: transform 0.3s ease;
         }
 
@@ -100,25 +199,74 @@
         }
 
         .content-section {
-            padding: 25px;
+            padding: 30px;
         }
 
+        /* Content Styling */
         .content-overview {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            border-left: 4px solid #6b9080;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            padding: 20px;
+            margin-bottom: 30px;
+            font-style: italic;
+            color: #cccccc;
         }
 
-        .key-points {
-            margin-bottom: 20px;
+        .market-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-box {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .detailed-info {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .detailed-info h5 {
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .detailed-info p {
+            color: #cccccc;
+            line-height: 1.7;
+            margin-bottom: 15px;
         }
 
         .key-points h4 {
-            color: #2d5a27;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            font-weight: 600;
         }
 
         .points-list {
@@ -127,156 +275,127 @@
         }
 
         .points-list li {
-            background: #e8f5e8;
-            padding: 8px 12px;
-            margin: 5px 0;
-            border-radius: 8px;
-            border-left: 3px solid #4a7c59;
-            font-size: 0.9rem;
-        }
-
-        .market-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .stat-box {
-            background: linear-gradient(135deg, #a4c3b2, #cce3de);
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #2d5a27;
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: #4a7c59;
-            margin-top: 5px;
-        }
-
-        .detailed-info {
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 15px 0;
-            border: 1px solid #e0e0e0;
-        }
-
-        .detailed-info h5 {
-            color: #2d5a27;
-            margin-bottom: 10px;
-            font-size: 1rem;
-        }
-
-        .detailed-info p {
-            line-height: 1.6;
-            color: #333;
-            font-size: 0.9rem;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            padding: 12px 15px;
+            margin: 8px 0;
+            color: #cccccc;
+            font-size: 14px;
         }
 
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin: 15px 0;
+            gap: 10px;
+            margin: 20px 0;
         }
 
         .tech-tag {
-            background: #4a7c59;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 500;
+            background-color: #333;
+            color: #ffffff;
+            padding: 6px 12px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid #555;
         }
 
-        .market-overview {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 40px 0;
-            color: white;
-            text-align: center;
-        }
-
-        .overview-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .overview-item {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 20px;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-        }
-
-        .search-box {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 20px;
-            border-radius: 15px;
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .search-input {
-            width: 100%;
-            max-width: 400px;
-            padding: 12px 20px;
-            border: 2px solid #6b9080;
-            border-radius: 25px;
-            font-size: 1rem;
-            outline: none;
-            transition: border-color 0.3s ease;
-        }
-
-        .search-input:focus {
-            border-color: #4a7c59;
-        }
-
+        /* Timeline */
         .timeline {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 15px 0;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            padding: 25px;
+            margin: 20px 0;
         }
 
         .timeline-item {
             display: flex;
-            align-items: center;
-            margin: 10px 0;
-            padding: 10px;
-            border-left: 3px solid #6b9080;
+            align-items: flex-start;
+            margin: 15px 0;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
         }
 
         .timeline-year {
-            font-weight: bold;
-            color: #2d5a27;
-            margin-right: 15px;
+            font-weight: 900;
+            color: #ffffff;
+            margin-right: 20px;
             min-width: 60px;
+            font-size: 14px;
         }
 
         .timeline-event {
-            font-size: 0.9rem;
-            color: #333;
+            color: #cccccc;
+            font-size: 14px;
+            line-height: 1.5;
         }
 
+        /* Footer */
+        .footer {
+            border-top: 1px solid #333;
+            padding-top: 40px;
+            text-align: center;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: #888;
+            text-decoration: underline;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #ffffff;
+        }
+
+        .footer-text {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
+            .container {
+                padding: 40px 20px;
             }
             
-            .topic-grid {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .content-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                gap: 20px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .overview-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
             .market-stats {
@@ -286,59 +405,70 @@
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>🌍 Corporate Environmental Management Learning Hub</h1>
-        <p>Comprehensive Guide to Voluntary Carbon Markets, ESG, and Sustainability</p>
-    </div>
-
     <div class="container">
-        <div class="search-box">
-            <input type="text" class="search-input" placeholder="Search topics, terms, or concepts..." onkeyup="searchContent(this.value)">
-            <p style="margin-top: 10px; color: #666; font-size: 0.9rem;">Click any card below to expand and learn more</p>
-        </div>
+        <!-- Header -->
+        <header class="header">
+            <div class="header-tagline">FROM POLICY TO PRACTICE</div>
+            <h1>Corporate Environmental Management</h1>
+            <div class="header-subtitle">Voluntary Carbon Markets</div>
+            
+            <nav class="nav-section">
+                <div class="nav-links">
+                    <a href="#overview" class="nav-link">MARKET OVERVIEW</a>
+                    <a href="#registries" class="nav-link">REGISTRIES</a>
+                    <a href="#frameworks" class="nav-link">FRAMEWORKS</a>
+                    <a href="#technology" class="nav-link">TECHNOLOGY</a>
+                    <a href="#analytics" class="nav-link">ANALYTICS</a>
+                </div>
+            </nav>
+        </header>
 
-        <div class="market-overview">
-            <h2>🚀 Voluntary Carbon Market Overview 2024</h2>
+        <!-- Search Section -->
+        <section class="search-section">
+            <input type="text" class="search-input" placeholder="Search topics, terms, or concepts..." onkeyup="searchContent(this.value)">
+        </section>
+
+        <!-- Market Overview -->
+        <section class="market-overview" id="overview">
+            <h2 class="section-title">market overview</h2>
             <div class="overview-grid">
-                <div class="overview-item">
-                    <div style="font-size: 2rem; font-weight: bold;">$1.4B</div>
-                    <div>Current Market Value</div>
+                <div class="overview-card">
+                    <div class="overview-number">$1.4B</div>
+                    <div class="overview-label">Market Value 2024</div>
                 </div>
-                <div class="overview-item">
-                    <div style="font-size: 2rem; font-weight: bold;">$7-35B</div>
-                    <div>Projected by 2030</div>
+                <div class="overview-card">
+                    <div class="overview-number">$7-35B</div>
+                    <div class="overview-label">Projected 2030</div>
                 </div>
-                <div class="overview-item">
-                    <div style="font-size: 2rem; font-weight: bold;">305M</div>
-                    <div>Credits Issued in 2024</div>
+                <div class="overview-card">
+                    <div class="overview-number">305M</div>
+                    <div class="overview-label">Credits Issued 2024</div>
                 </div>
-                <div class="overview-item">
-                    <div style="font-size: 2rem; font-weight: bold;">COP29</div>
-                    <div>Article 6 Finalized</div>
+                <div class="overview-card">
+                    <div class="overview-number">COP29</div>
+                    <div class="overview-label">Article 6 Finalized</div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="topic-grid" id="topicGrid">
-            <!-- VCM Registries & Standards -->
-            <div class="topic-card" onclick="toggleCard(this)" data-search="verra gold standard american carbon registry climate action reserve vcs verification validation">
+        <!-- Main Content -->
+        <main class="content-grid" id="content">
+            <!-- VCM Registries -->
+            <article class="topic-card" onclick="toggleCard(this)" data-search="verra gold standard registry verification validation">
                 <div class="card-header">
-                    <div class="card-title">
-                        <span class="card-icon">📋</span>
-                        VCM Registries & Standards
-                    </div>
+                    <h3 class="card-title">VCM Registries & Standards</h3>
                     <span class="expand-indicator">+</span>
                 </div>
                 <div class="card-content">
                     <div class="content-section">
                         <div class="content-overview">
-                            <strong>The backbone of voluntary carbon markets</strong> - Standards organizations that establish rules, methodologies, and registries for carbon credit issuance and tracking.
+                            Standards organizations that establish rules, methodologies, and registries for carbon credit issuance and tracking. The backbone of voluntary carbon markets.
                         </div>
                         
                         <div class="market-stats">
                             <div class="stat-box">
                                 <div class="stat-number">57%</div>
-                                <div class="stat-label">Verra Market Share</div>
+                                <div class="stat-label">Verra Share</div>
                             </div>
                             <div class="stat-box">
                                 <div class="stat-number">16%</div>
@@ -355,7 +485,7 @@
                         </div>
 
                         <div class="detailed-info">
-                            <h5>🔵 Verra (Verified Carbon Standard)</h5>
+                            <h5>Verra (Verified Carbon Standard)</h5>
                             <p><strong>Market Leader:</strong> Verra issued 295M VCUs in 2021, representing 83% of the total certified credit tons. As of 2024, Verra maintains 57% market share with 1800+ registered projects. Established in 2008, VCS covers agriculture, forestry, energy, and waste management sectors.</p>
                             <div class="tech-stack">
                                 <span class="tech-tag">AFOLU Projects</span>
@@ -366,7 +496,7 @@
                         </div>
 
                         <div class="detailed-info">
-                            <h5>🟡 Gold Standard</h5>
+                            <h5>Gold Standard</h5>
                             <p><strong>Co-benefits Focus:</strong> Founded by WWF, Gold Standard issued 44M credits in 2021, focusing on social & community impacts. Unlike Verra, GS has proportionally fewer nature-based projects (only 4% of credits). Emphasizes sustainable development goals alongside emission reductions.</p>
                             <div class="tech-stack">
                                 <span class="tech-tag">Community Projects</span>
@@ -376,36 +506,23 @@
                         </div>
 
                         <div class="detailed-info">
-                            <h5>🟢 American Carbon Registry (ACR)</h5>
-                            <p><strong>First Private Registry:</strong> Operating since 1996, ACR is the first private registry in the world for voluntary carbon markets, geographically focused on the Americas including Canada and LATAM.</p>
-                        </div>
-
-                        <div class="detailed-info">
-                            <h5>🔴 Climate Action Reserve (CAR)</h5>
-                            <p><strong>US-Focused Standard:</strong> CAR grew out of a database created by the state of California. CAR credits can be transferred to VCS, so CAR-issued credits can be converted into VCUs.</p>
-                        </div>
-
-                        <div class="detailed-info">
-                            <h5>🏆 Integrity Council Approval</h5>
+                            <h5>Integrity Council Approval</h5>
                             <p><strong>CCP Label:</strong> In 2024, the ICVCM approved five registries: ACR, Architecture for REDD+ Transactions, CAR, Gold Standard, and Verra for Core Carbon Principles (CCP) labeling. This provides buyers with additional quality assurance.</p>
                         </div>
                     </div>
                 </div>
-            </div>
+            </article>
 
             <!-- International Frameworks -->
-            <div class="topic-card" onclick="toggleCard(this)" data-search="kyoto protocol clean development mechanism certified emission reductions unfccc annex">
+            <article class="topic-card" onclick="toggleCard(this)" data-search="kyoto protocol cdm unfccc international agreements">
                 <div class="card-header">
-                    <div class="card-title">
-                        <span class="card-icon">🌐</span>
-                        International Frameworks
-                    </div>
+                    <h3 class="card-title">International Frameworks</h3>
                     <span class="expand-indicator">+</span>
                 </div>
                 <div class="card-content">
                     <div class="content-section">
                         <div class="content-overview">
-                            <strong>Foundation of global carbon markets</strong> - International agreements and mechanisms that established the legal and operational framework for carbon trading.
+                            International agreements and mechanisms that established the legal and operational framework for carbon trading. Foundation of global carbon markets.
                         </div>
 
                         <div class="timeline">
@@ -432,51 +549,44 @@
                         </div>
 
                         <div class="detailed-info">
-                            <h5>📜 Kyoto Protocol (1997)</h5>
-                            <p><strong>First Global Carbon Market:</strong> Established binding emission reduction commitments for developed countries and created three flexible mechanisms: Emissions Trading, Joint Implementation, and the Clean Development Mechanism (CDM). The CDM allowed industrialized countries to invest in emission reduction projects in developing countries, generating Certified Emission Reduction credits (CERs).</p>
+                            <h5>Kyoto Protocol (1997)</h5>
+                            <p><strong>First Global Carbon Market:</strong> Established binding emission reduction commitments for developed countries and created three flexible mechanisms: Emissions Trading, Joint Implementation, and the Clean Development Mechanism (CDM).</p>
                         </div>
 
                         <div class="detailed-info">
-                            <h5>🔄 Clean Development Mechanism</h5>
-                            <p><strong>Project-Based Crediting:</strong> As of March 2024, 1,389 CDM projects and 119 programmes of activities have filed documents to transition into the Article 6.4 system, potentially creating nearly 1 billion repackaged CDM credits. However, concerns exist about credit quality from legacy projects.</p>
-                        </div>
-
-                        <div class="detailed-info">
-                            <h5>🏛️ UNFCCC Framework</h5>
-                            <p><strong>Global Climate Governance:</strong> The United Nations Framework Convention on Climate Change provides the overarching framework for international climate cooperation, including the development of market mechanisms under both Kyoto and Paris agreements.</p>
-                        </div>
-
-                        <div class="key-points">
-                            <h4>Key Concepts:</h4>
-                            <ul class="points-list">
-                                <li><strong>Annex I Countries:</strong> Developed nations with emission reduction obligations</li>
-                                <li><strong>Non-Annex I Countries:</strong> Developing nations eligible to host CDM projects</li>
-                                <li><strong>Joint Implementation:</strong> Emission reduction projects between Annex I countries</li>
-                                <li><strong>Emission Trading:</strong> Cap-and-trade systems for carbon allowances</li>
-                            </ul>
+                            <h5>Clean Development Mechanism</h5>
+                            <p><strong>Project-Based Crediting:</strong> As of March 2024, 1,389 CDM projects and 119 programmes of activities have filed documents to transition into the Article 6.4 system, potentially creating nearly 1 billion repackaged CDM credits.</p>
                         </div>
                     </div>
                 </div>
-            </div>
+            </article>
 
-            <!-- Paris Agreement & Article 6 -->
-            <div class="topic-card" onclick="toggleCard(this)" data-search="paris agreement article 6 ITMO PACM corresponding adjustment cop29">
+            <!-- Paris Agreement -->
+            <article class="topic-card" onclick="toggleCard(this)" data-search="paris agreement article 6 ITMO PACM cop29">
                 <div class="card-header">
-                    <div class="card-title">
-                        <span class="card-icon">🤝</span>
-                        Paris Agreement & Article 6
-                    </div>
+                    <h3 class="card-title">Paris Agreement & Article 6</h3>
                     <span class="expand-indicator">+</span>
                 </div>
                 <div class="card-content">
                     <div class="content-section">
                         <div class="content-overview">
-                            <strong>Next-generation carbon markets</strong> - COP29 finalized Article 6 rules, paving the way for a new era in global carbon markets with first trades expected by end of 2025.
+                            Next-generation carbon markets. COP29 finalized Article 6 rules, paving the way for a new era in global carbon markets with first trades expected by end of 2025.
+                        </div>
+
+                        <div class="market-stats">
+                            <div class="stat-box">
+                                <div class="stat-number">$100B</div>
+                                <div class="stat-label">Projected Annual Market</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-number">2025</div>
+                                <div class="stat-label">First Trades Expected</div>
+                            </div>
                         </div>
 
                         <div class="detailed-info">
-                            <h5>🎯 Article 6.2 - Bilateral Trading</h5>
-                            <p><strong>Country-to-Country Trading:</strong> Article 6.2 allows countries to trade emission reductions through bilateral agreements. These traded credits are called Internationally Transferred Mitigation Outcomes (ITMOs). Japan and Indonesia are already preparing bilateral agreements.</p>
+                            <h5>Article 6.2 - Bilateral Trading</h5>
+                            <p><strong>Country-to-Country Trading:</strong> Article 6.2 allows countries to trade emission reductions through bilateral agreements. These traded credits are called Internationally Transferred Mitigation Outcomes (ITMOs).</p>
                             
                             <div class="key-points">
                                 <h4>Requirements:</h4>
@@ -490,56 +600,48 @@
                         </div>
 
                         <div class="detailed-info">
-                            <h5>🏢 Article 6.4 - Centralized Mechanism</h5>
-                            <p><strong>UN-Supervised Trading:</strong> The Paris Agreement Crediting Mechanism (PACM) replaces the CDM under UN oversight. Credits are called Article 6.4 Emission Reductions ('6.4 ERs'). This provides a centralized alternative to bilateral trading.</p>
+                            <h5>Article 6.4 - Centralized Mechanism</h5>
+                            <p><strong>UN-Supervised Trading:</strong> The Paris Agreement Crediting Mechanism (PACM) replaces the CDM under UN oversight. Credits are called Article 6.4 Emission Reductions ('6.4 ERs').</p>
                         </div>
 
                         <div class="detailed-info">
-                            <h5>⚖️ Corresponding Adjustments</h5>
-                            <p><strong>Anti-Double Counting:</strong> Host countries must discount abatement from national accounts when transferring credits, ensuring units aren't counted by more than one party. Critical for CORSIA compliance.</p>
-                        </div>
-
-                        <div class="detailed-info">
-                            <h5>🚨 COP29 Breakthrough</h5>
+                            <h5>COP29 Breakthrough</h5>
                             <p><strong>Implementation Ready:</strong> COP29 resolved key issues including revocation clauses and CDM credit transfers. Once ITMOs have been "first transferred," they cannot be affected by revocations unless specified by Parties.</p>
-                        </div>
-
-                        <div class="market-stats">
-                            <div class="stat-box">
-                                <div class="stat-number">$100B</div>
-                                <div class="stat-label">Projected Annual Market by 2030</div>
-                            </div>
-                            <div class="stat-box">
-                                <div class="stat-number">2025</div>
-                                <div class="stat-label">First Trades Expected</div>
-                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </article>
 
-            <!-- CORSIA Integration -->
-            <div class="topic-card" onclick="toggleCard(this)" data-search="CORSIA aviation carbon offsetting ICAO airlines compliance mandatory">
+            <!-- CORSIA -->
+            <article class="topic-card" onclick="toggleCard(this)" data-search="CORSIA aviation ICAO airlines compliance">
                 <div class="card-header">
-                    <div class="card-title">
-                        <span class="card-icon">✈️</span>
-                        CORSIA & Aviation
-                    </div>
+                    <h3 class="card-title">CORSIA & Aviation</h3>
                     <span class="expand-indicator">+</span>
                 </div>
                 <div class="card-content">
                     <div class="content-section">
                         <div class="content-overview">
-                            <strong>Aviation's carbon offsetting scheme</strong> - CORSIA governs how the aviation industry decarbonizes, with Phase 1 (2024-2026) currently voluntary and compulsory phase beginning in 2027.
+                            Aviation's carbon offsetting scheme. CORSIA governs how the aviation industry decarbonizes, with Phase 1 (2024-2026) currently voluntary and compulsory phase beginning in 2027.
+                        </div>
+
+                        <div class="market-stats">
+                            <div class="stat-box">
+                                <div class="stat-number">2027</div>
+                                <div class="stat-label">Mandatory Phase</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-number">100M+</div>
+                                <div class="stat-label">Credits Needed Annually</div>
+                            </div>
                         </div>
 
                         <div class="detailed-info">
-                            <h5>📊 Market Demand</h5>
+                            <h5>Market Demand</h5>
                             <p><strong>Massive Scale Needed:</strong> In 2024, 12 international registries issued 305 million carbon credits total - just a fraction of what will be needed under CORSIA. Demand could exceed 100 Mt CO2-eq annually before 2030.</p>
                         </div>
 
                         <div class="detailed-info">
-                            <h5>✅ Approved Standards (December 2024)</h5>
+                            <h5>Approved Standards (December 2024)</h5>
                             <p><strong>Expanded Eligibility:</strong> Four additional standards received ICAO approval: Gold Standard, Verra, Climate Action Reserve, and Global Carbon Council join previously approved ACR and ART.</p>
                             
                             <div class="key-points">
@@ -552,76 +654,20 @@
                                 </ul>
                             </div>
                         </div>
-
-                        <div class="detailed-info">
-                            <h5>🎯 CORSIA Baseline</h5>
-                            <p><strong>Emission Limits:</strong> Airlines must offset emissions above 85% of 2019 CO2 emissions from international aviation. This creates predictable demand for high-quality carbon credits.</p>
-                        </div>
-
-                        <div class="market-stats">
-                            <div class="stat-box">
-                                <div class="stat-number">2027</div>
-                                <div class="stat-label">Mandatory Phase Begins</div>
-                            </div>
-                            <div class="stat-box">
-                                <div class="stat-number">100M+</div>
-                                <div class="stat-label">Credits Needed Annually</div>
-                            </div>
-                        </div>
                     </div>
                 </div>
-            </div>
+            </article>
 
             <!-- MRV & Technology -->
-            <div class="topic-card" onclick="toggleCard(this)" data-search="MRV monitoring reporting verification digital technology blockchain IoT satellite AI">
+            <article class="topic-card" onclick="toggleCard(this)" data-search="MRV monitoring verification technology blockchain AI">
                 <div class="card-header">
-                    <div class="card-title">
-                        <span class="card-icon">🔍</span>
-                        MRV & Technology
-                    </div>
+                    <h3 class="card-title">MRV & Technology</h3>
                     <span class="expand-indicator">+</span>
                 </div>
                 <div class="card-content">
                     <div class="content-section">
                         <div class="content-overview">
-                            <strong>The backbone of carbon credit integrity</strong> - MRV quantifies CO2 emissions reduced or removed, transparently reports findings, and ensures independent verification for carbon credit issuance.
-                        </div>
-
-                        <div class="detailed-info">
-                            <h5>📏 Measurement & Monitoring</h5>
-                            <p><strong>Data Collection:</strong> Systematic collection using sensors, satellite data, or direct measurements. IoT devices provide continuous monitoring of CO2 levels, air quality, and soil health in real-time.</p>
-                            
-                            <div class="tech-stack">
-                                <span class="tech-tag">IoT Sensors</span>
-                                <span class="tech-tag">Satellite Imagery</span>
-                                <span class="tech-tag">LiDAR</span>
-                                <span class="tech-tag">Smart Meters</span>
-                            </div>
-                        </div>
-
-                        <div class="detailed-info">
-                            <h5>🤖 Digital MRV Revolution</h5>
-                            <p><strong>Efficiency Gains:</strong> According to SustainCert, with manual verification one officer can verify 100-150 projects per year, but with Digital MRV, one officer can verify 10 projects per day!</p>
-                            
-                            <div class="key-points">
-                                <h4>Digital Technologies:</h4>
-                                <ul class="points-list">
-                                    <li><strong>AI & Machine Learning:</strong> Pattern recognition and automated analysis</li>
-                                    <li><strong>Blockchain:</strong> Immutable, tamper-proof data records</li>
-                                    <li><strong>Remote Sensing:</strong> Satellite monitoring of large-scale projects</li>
-                                    <li><strong>IoT Networks:</strong> Real-time environmental data collection</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="detailed-info">
-                            <h5>🛡️ Verification Process</h5>
-                            <p><strong>Independent Assessment:</strong> Third-party verification by accredited bodies ensures reported emission reductions are legitimate, with blockchain creating decentralized, immutable records.</p>
-                        </div>
-
-                        <div class="detailed-info">
-                            <h5>⚠️ Quality Challenges</h5>
-                            <p><strong>Integrity Concerns:</strong> Poor MRV can result in certification of non-additional, non-permanent, high-leakage credits. Recent reporting indicated systematic over-crediting in certain REDD+ projects.</p>
+                            The backbone of carbon credit integrity. MRV quantifies CO2 emissions reduced or removed, transparently reports findings, and ensures independent verification for carbon credit issuance.
                         </div>
 
                         <div class="market-stats">
@@ -634,255 +680,53 @@
                                 <div class="stat-label">Sylvera Series B</div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Market Mechanics -->
-            <div class="topic-card" onclick="toggleCard(this)" data-search="trading secondary markets OTC retirement double counting credit lifecycle">
-                <div class="card-header">
-                    <div class="card-title">
-                        <span class="card-icon">📊</span>
-                        Market Mechanics
-                    </div>
-                    <span class="expand-indicator">+</span>
-                </div>
-                <div class="card-content">
-                    <div class="content-section">
-                        <div class="content-overview">
-                            <strong>How carbon credits are traded and tracked</strong> - Understanding the infrastructure and processes that enable carbon credit transactions from issuance to retirement.
-                        </div>
 
                         <div class="detailed-info">
-                            <h5>🔄 Credit Lifecycle</h5>
-                            <p><strong>From Project to Retirement:</strong> Credits move through project registration, validation, issuance, trading in secondary markets, and final retirement when used for offsetting claims.</p>
+                            <h5>Digital MRV Revolution</h5>
+                            <p><strong>Efficiency Gains:</strong> According to SustainCert, with manual verification one officer can verify 100-150 projects per year, but with Digital MRV, one officer can verify 10 projects per day!</p>
                             
                             <div class="key-points">
-                                <h4>Lifecycle Stages:</h4>
+                                <h4>Digital Technologies:</h4>
                                 <ul class="points-list">
-                                    <li><strong>Registration:</strong> Project approved by standards body</li>
-                                    <li><strong>Validation:</strong> Third-party assessment of project design</li>
-                                    <li><strong>Issuance:</strong> Credits generated and entered into registry</li>
-                                    <li><strong>Trading:</strong> Credits bought/sold in secondary markets</li>
-                                    <li><strong>Retirement:</strong> Credits permanently removed from circulation</li>
+                                    <li>AI & Machine Learning: Pattern recognition and automated analysis</li>
+                                    <li>Blockchain: Immutable, tamper-proof data records</li>
+                                    <li>Remote Sensing: Satellite monitoring of large-scale projects</li>
+                                    <li>IoT Networks: Real-time environmental data collection</li>
                                 </ul>
                             </div>
                         </div>
 
                         <div class="detailed-info">
-                            <h5>💹 Trading Platforms</h5>
-                            <p><strong>Market Infrastructure:</strong> ACX (AirCarbon Exchange) won best carbon exchange in 2024. Following steep price drops in November 2023, the market has remained relatively flat with most credits trading below $2.</p>
+                            <h5>Verification Process</h5>
+                            <p><strong>Independent Assessment:</strong> Third-party verification by accredited bodies ensures reported emission reductions are legitimate, with blockchain creating decentralized, immutable records.</p>
                             
                             <div class="tech-stack">
-                                <span class="tech-tag">Regulated Exchanges</span>
-                                <span class="tech-tag">OTC Platforms</span>
-                                <span class="tech-tag">Limit Order Books</span>
-                                <span class="tech-tag">Price Discovery</span>
-                            </div>
-                        </div>
-
-                        <div class="detailed-info">
-                            <h5>🚫 Double Counting Prevention</h5>
-                            <p><strong>Registry Controls:</strong> Registries maintain unique serial numbers and track ownership changes. Credits are "retired" to represent permanent removal and single use, ensuring the same emissions unit cannot be used more than once.</p>
-                        </div>
-
-                        <div class="detailed-info">
-                            <h5>📈 Price Dynamics</h5>
-                            <p><strong>Market Factors:</strong> Average vintage age rose to 6.1 years in 2021, with retirement of older credits including avoided deforestation projects over ten years old driving this trend. Removal projects command price premiums due to permanence characteristics.</p>
-                        </div>
-
-                        <div class="market-stats">
-                            <div class="stat-box">
-                                <div class="stat-number">6.1</div>
-                                <div class="stat-label">Avg Vintage Age (years)</div>
-                            </div>
-                            <div class="stat-box">
-                                <div class="stat-number">40%</div>
-                                <div class="stat-label">Blockchain Retirements (Q4 2021)</div>
+                                <span class="tech-tag">IoT Sensors</span>
+                                <span class="tech-tag">Satellite Imagery</span>
+                                <span class="tech-tag">LiDAR</span>
+                                <span class="tech-tag">Smart Meters</span>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- ESG Integration -->
-            <div class="topic-card" onclick="toggleCard(this)" data-search="ESG environmental social governance reporting TCFD GRI SASB EU taxonomy">
-                <div class="card-header">
-                    <div class="card-title">
-                        <span class="card-icon">📈</span>
-                        ESG Integration
-                    </div>
-                    <span class="expand-indicator">+</span>
-                </div>
-                <div class="card-content">
-                    <div class="content-section">
-                        <div class="content-overview">
-                            <strong>Environmental, Social & Governance frameworks</strong> - How carbon markets integrate with broader corporate sustainability and reporting requirements.
-                        </div>
-
-                        <div class="detailed-info">
-                            <h5>📋 Reporting Standards</h5>
-                            <p><strong>Multiple Frameworks:</strong> Companies must navigate various reporting requirements including GRI Standards for sustainability impact, SASB for financially material factors, and TCFD for climate-related risks.</p>
-                            
-                            <div class="key-points">
-                                <h4>Key Frameworks:</h4>
-                                <ul class="points-list">
-                                    <li><strong>GRI Standards:</strong> Global standard for sustainability reporting</li>
-                                    <li><strong>SASB Framework:</strong> Industry-specific sustainability metrics</li>
-                                    <li><strong>TCFD:</strong> Climate-related financial disclosures</li>
-                                    <li><strong>EU Taxonomy:</strong> Classification of sustainable activities</li>
-                                    <li><strong>CSRD:</strong> EU Corporate Sustainability Reporting Directive</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="detailed-info">
-                            <h5>🎯 Net Zero Commitments</h5>
-                            <p><strong>Corporate Climate Action:</strong> By 2020, numerous companies representing over $12.5 trillion in revenue and 3.5 gigatons of GHG emissions had set net-zero targets, mostly aiming for carbon neutrality by 2050 in line with Paris Agreement goals.</p>
-                        </div>
-
-                        <div class="detailed-info">
-                            <h5>📊 Materiality Assessment</h5>
-                            <p><strong>Risk & Opportunity Identification:</strong> Companies conduct materiality assessments to identify which environmental and social factors are most significant to their business and stakeholders, informing ESG strategy and reporting priorities.</p>
-                        </div>
-
-                        <div class="market-stats">
-                            <div class="stat-box">
-                                <div class="stat-number">$12.5T</div>
-                                <div class="stat-label">Revenue of Net Zero Companies</div>
-                            </div>
-                            <div class="stat-box">
-                                <div class="stat-number">3.5GT</div>
-                                <div class="stat-label">Corporate GHG Emissions</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Economic Theory -->
-            <div class="topic-card" onclick="toggleCard(this)" data-search="pigou tax coase theorem externalities carbon pricing transaction costs">
-                <div class="card-header">
-                    <div class="card-title">
-                        <span class="card-icon">💰</span>
-                        Economic Theory
-                    </div>
-                    <span class="expand-indicator">+</span>
-                </div>
-                <div class="card-content">
-                    <div class="content-section">
-                        <div class="content-overview">
-                            <strong>Theoretical foundations of carbon markets</strong> - Economic principles that underpin market-based environmental solutions.
-                        </div>
-
-                        <div class="detailed-info">
-                            <h5>📚 Pigou Tax Theory (1920)</h5>
-                            <p><strong>Internalizing Externalities:</strong> Arthur Pigou proposed imposing taxes on polluting activities to internalize social costs, making polluters pay for environmental damage. This formed the basis for carbon pricing mechanisms.</p>
-                        </div>
-
-                        <div class="detailed-info">
-                            <h5>🔄 Coase Theorem (1960)</h5>
-                            <p><strong>Property Rights Solution:</strong> Ronald Coase proposed creating transferable property rights for pollution as a market-based solution, forming the theoretical foundation for emissions trading systems and carbon markets.</p>
-                        </div>
-
-                        <div class="detailed-info">
-                            <h5>💸 Transaction Cost Analysis</h5>
-                            <p><strong>Market Efficiency:</strong> Transaction costs significantly impact market participation. NGOs often find voluntary markets more suitable due to smaller project scales and lower transaction costs compared to compliance markets.</p>
-                        </div>
-
-                        <div class="key-points">
-                            <h4>Key Economic Concepts:</h4>
-                            <ul class="points-list">
-                                <li><strong>Externalities:</strong> Environmental costs not reflected in market prices</li>
-                                <li><strong>Price Discovery:</strong> Market mechanisms to find efficient carbon pricing</li>
-                                <li><strong>Additionality:</strong> Ensuring projects wouldn't happen without carbon finance</li>
-                                <li><strong>Marginal Abatement Cost:</strong> Cost of reducing one additional unit of emissions</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project Categories -->
-            <div class="topic-card" onclick="toggleCard(this)" data-search="reduction removal REDD forestry renewable energy DAC biochar agriculture">
-                <div class="card-header">
-                    <div class="card-title">
-                        <span class="card-icon">🌿</span>
-                        Project Categories
-                    </div>
-                    <span class="expand-indicator">+</span>
-                </div>
-                <div class="card-content">
-                    <div class="content-section">
-                        <div class="content-overview">
-                            <strong>Types of carbon credit projects</strong> - Pure removal projects made up only 3% of all projects in 2021-2022, while mixed projects represented 13%. No durable removal credits were issued in 2021.
-                        </div>
-
-                        <div class="detailed-info">
-                            <h5>🔻 Reduction Projects</h5>
-                            <p><strong>Avoiding Emissions:</strong> Projects that prevent greenhouse gas emissions from being released into the atmosphere. Include renewable energy, energy efficiency, and waste management projects.</p>
-                            
-                            <div class="tech-stack">
-                                <span class="tech-tag">Renewable Energy</span>
-                                <span class="tech-tag">Energy Efficiency</span>
-                                <span class="tech-tag">Methane Capture</span>
-                                <span class="tech-tag">Transportation</span>
-                            </div>
-                        </div>
-
-                        <div class="detailed-info">
-                            <h5>🌱 Removal Projects (Premium Pricing)</h5>
-                            <p><strong>Carbon Sequestration:</strong> Biochar provided 94% of all CDR delivered credits in 2023, commanding higher prices due to established MRV methods and stable carbon sequestration through pyrolysis.</p>
-                            
-                            <div class="key-points">
-                                <h4>Removal Categories:</h4>
-                                <ul class="points-list">
-                                    <li><strong>Biological Sequestration:</strong> Forestry, agriculture, wetlands</li>
-                                    <li><strong>Direct Air Capture:</strong> Technological removal from atmosphere</li>
-                                    <li><strong>Biochar:</strong> Pyrolysis of biomass for stable carbon storage</li>
-                                    <li><strong>Enhanced Weathering:</strong> Accelerated natural processes</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="detailed-info">
-                            <h5>🌳 AFOLU Projects</h5>
-                            <p><strong>Land Use Focus:</strong> Agriculture, Forestry and Other Land Use projects include REDD+ (avoiding deforestation), ARR (Afforestation, Reforestation, Revegetation), and IFM (Improved Forest Management).</p>
-                        </div>
-
-                        <div class="market-stats">
-                            <div class="stat-box">
-                                <div class="stat-number">52%</div>
-                                <div class="stat-label">Verra Nature-Based (2021)</div>
-                            </div>
-                            <div class="stat-box">
-                                <div class="stat-number">94%</div>
-                                <div class="stat-label">Biochar CDR Share (2023)</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </article>
 
             <!-- Market Analytics -->
-            <div class="topic-card" onclick="toggleCard(this)" data-search="market size growth projections prices trends corporate demand">
+            <article class="topic-card" onclick="toggleCard(this)" data-search="market size analytics projections corporate demand">
                 <div class="card-header">
-                    <div class="card-title">
-                        <span class="card-icon">📊</span>
-                        Market Analytics
-                    </div>
+                    <h3 class="card-title">Market Analytics</h3>
                     <span class="expand-indicator">+</span>
                 </div>
                 <div class="card-content">
                     <div class="content-section">
                         <div class="content-overview">
-                            <strong>Market size, trends and projections</strong> - VCM reached $1.4 billion in 2024, following a peak of $2.1 billion in 2021, with projections to expand to $7-35 billion by 2030.
+                            Market size, trends and projections. VCM reached $1.4 billion in 2024, following a peak of $2.1 billion in 2021, with projections to expand to $7-35 billion by 2030.
                         </div>
 
                         <div class="market-stats">
                             <div class="stat-box">
                                 <div class="stat-number">$1.4B</div>
-                                <div class="stat-label">2024 Market Value</div>
+                                <div class="stat-label">2024 Value</div>
                             </div>
                             <div class="stat-box">
                                 <div class="stat-number">$2.1B</div>
@@ -890,56 +734,49 @@
                             </div>
                             <div class="stat-box">
                                 <div class="stat-number">$50B</div>
-                                <div class="stat-label">McKinsey 2030 Projection</div>
+                                <div class="stat-label">McKinsey 2030</div>
                             </div>
                             <div class="stat-box">
                                 <div class="stat-number">15-100x</div>
-                                <div class="stat-label">Demand Growth by 2050</div>
+                                <div class="stat-label">Growth by 2050</div>
                             </div>
                         </div>
 
                         <div class="detailed-info">
-                            <h5>📈 Growth Drivers</h5>
+                            <h5>Growth Drivers</h5>
                             <p><strong>Multiple Catalysts:</strong> Growth drivers include mandatory reporting under CORSIA, potential convergence of compliance and voluntary markets via Article 6, and increasing demand for carbon removal within financial sectors.</p>
                             
                             <div class="key-points">
                                 <h4>Market Drivers:</h4>
                                 <ul class="points-list">
-                                    <li><strong>CORSIA Demand:</strong> Aviation industry compliance requirements</li>
-                                    <li><strong>Corporate Net Zero:</strong> Private sector climate commitments</li>
-                                    <li><strong>Article 6 Integration:</strong> Government backing of voluntary markets</li>
-                                    <li><strong>Financial Sector:</strong> ESG investment requirements</li>
+                                    <li>CORSIA Demand: Aviation industry compliance requirements</li>
+                                    <li>Corporate Net Zero: Private sector climate commitments</li>
+                                    <li>Article 6 Integration: Government backing of voluntary markets</li>
+                                    <li>Financial Sector: ESG investment requirements</li>
                                 </ul>
                             </div>
                         </div>
 
                         <div class="detailed-info">
-                            <h5>💰 Price Trends</h5>
-                            <p><strong>Market Dynamics:</strong> Throughout 2024, prices remained low but decline was not as significant as 2023. Most credit types have been trading below $2 following steep drops in November 2023.</p>
-                        </div>
-
-                        <div class="detailed-info">
-                            <h5>🏢 Corporate Participation</h5>
+                            <h5>Corporate Participation</h5>
                             <p><strong>COVID-19 Resilience:</strong> Corporate interest surged significantly in recent years, nearly tripling despite global economic downturn, illustrating increasing pressure on corporations to engage in climate mitigation.</p>
-                        </div>
-
-                        <div class="detailed-info">
-                            <h5>🔮 Future Outlook</h5>
-                            <p><strong>Scaling Potential:</strong> McKinsey projects demand for carbon credits could increase by a factor of 15 or more by 2030 and by a factor of up to 100 by 2050, with the market potentially worth upward of $50 billion in 2030.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </article>
+        </main>
 
-        <div class="market-overview">
-            <h2>🎓 Ready to Dive Deeper?</h2>
-            <p>This learning hub provides comprehensive coverage of voluntary carbon markets, from basic concepts to advanced implementation strategies. Each section contains the latest 2024 data and developments.</p>
-            <div style="margin-top: 20px;">
-                <a href="#" onclick="expandAll()" style="background: rgba(255,255,255,0.2); color: white; padding: 10px 20px; border-radius: 20px; text-decoration: none; margin: 0 10px;">Expand All Sections</a>
-                <a href="#" onclick="collapseAll()" style="background: rgba(255,255,255,0.2); color: white; padding: 10px 20px; border-radius: 20px; text-decoration: none; margin: 0 10px;">Collapse All</a>
-            </div>
-        </div>
+        <!-- Footer -->
+        <footer class="footer">
+            <nav class="footer-nav">
+                <a href="#" class="footer-link" onclick="expandAll()">EXPAND ALL</a>
+                <a href="#" class="footer-link" onclick="collapseAll()">COLLAPSE ALL</a>
+                <a href="#overview" class="footer-link">OVERVIEW</a>
+                <a href="#registries" class="footer-link">REGISTRIES</a>
+                <a href="#frameworks" class="footer-link">FRAMEWORKS</a>
+            </nav>
+            <p class="footer-text">Comprehensive framework for voluntary carbon markets and environmental management</p>
+        </footer>
     </div>
 
     <script>
@@ -949,13 +786,6 @@
             
             content.classList.toggle('expanded');
             indicator.textContent = content.classList.contains('expanded') ? '−' : '+';
-            
-            // Smooth scroll to card if expanding
-            if (content.classList.contains('expanded')) {
-                setTimeout(() => {
-                    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 300);
-            }
         }
 
         function searchContent(query) {
@@ -983,10 +813,8 @@
             cards.forEach(card => {
                 const content = card.querySelector('.card-content');
                 const indicator = card.querySelector('.expand-indicator');
-                if (!content.classList.contains('expanded')) {
-                    content.classList.add('expanded');
-                    indicator.textContent = '−';
-                }
+                content.classList.add('expanded');
+                indicator.textContent = '−';
             });
         }
 
@@ -1000,18 +828,17 @@
             });
         }
 
-        // Add smooth transitions on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            // Stagger card animations
-            const cards = document.querySelectorAll('.topic-card');
-            cards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                setTimeout(() => {
-                    card.style.transition = 'all 0.3s ease';
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, index * 100);
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
     </script>
